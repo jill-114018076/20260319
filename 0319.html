@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>可愛履歷</title>
+
+<style>
+body {
+    font-family: "Microsoft JhengHei", sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #ffd6e0, #fef6e4);
+    overflow-x: hidden;
+}
+
+/* 氣泡動畫 */
+.bubble {
+    position: fixed;
+    bottom: -50px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 50%;
+    animation: float 10s infinite;
+}
+
+@keyframes float {
+    from { transform: translateY(0); }
+    to { transform: translateY(-110vh); }
+}
+
+.resume {
+    display: flex;
+    max-width: 900px;
+    margin: 50px auto;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* 左側 */
+.left {
+    width: 35%;
+    background: #ffe4ec;
+    padding: 20px;
+    text-align: center;
+    transition: 0.5s;
+}
+
+.profile-pic {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid white;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+/* 右側 */
+.right {
+    width: 65%;
+    padding: 30px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.title {
+    color: #888;
+    margin-bottom: 20px;
+}
+
+h2 {
+    border-bottom: 2px dashed #ffb6c1;
+    padding-bottom: 5px;
+}
+
+/* 卡片感 */
+.card {
+    background: #fff7fa;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* 按鈕動畫 */
+button {
+    margin-top: 20px;
+    padding: 10px 15px;
+    border: none;
+    background: linear-gradient(45deg, #ff9a9e, #ffb6c1);
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+/* 手機版 */
+@media (max-width: 768px) {
+    .resume {
+        flex-direction: column;
+    }
+    .left, .right {
+        width: 100%;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<div class="resume">
+    <div class="left">
+        <img src="images/your-photo.jpg" class="profile-pic">
+
+        <h2>基本資料</h2>
+        <div class="card">姓名：蔡某某</div>
+        <div class="card">電話：0912-345-678</div>
+        <div class="card">Email：example@gmail.com</div>
+
+        <h2>技能</h2>
+        <div class="card">HTML / CSS</div>
+        <div class="card">JavaScript</div>
+        <div class="card">設計美編</div>
+    </div>
+
+    <div class="right">
+        <h1 id="name">蔡某某</h1>
+        <p class="title">前端工程師</p>
+
+        <h2>自我介紹</h2>
+        <p class="card">
+            我喜歡製作可愛又有互動感的網站，讓使用者感受到設計的溫度 ✨
+        </p>
+
+        <h2>學歷</h2>
+        <p class="card">某某大學 資訊管理系</p>
+
+        <h2>工作經驗</h2>
+        <p class="card">ABC公司 - 前端工程師 (2022 - 2025)</p>
+
+        <button onclick="changeTheme()">換主題色 🌈</button>
+    </div>
+</div>
+
+<script>
+// 🎨 主題切換
+function changeTheme() {
+    const colors = [
+        "#ffe4ec",
+        "#d0f4de",
+        "#cdb4db",
+        "#fff1c1",
+        "#a0c4ff"
+    ];
+    const random = colors[Math.floor(Math.random() * colors.length)];
+    document.querySelector(".left").style.background = random;
+}
+
+// 🫧 產生氣泡
+function createBubble() {
+    const bubble = document.createElement("div");
+    bubble.classList.add("bubble");
+
+    const size = Math.random() * 40 + 10;
+    bubble.style.width = size + "px";
+    bubble.style.height = size + "px";
+    bubble.style.left = Math.random() * window.innerWidth + "px";
+
+    document.body.appendChild(bubble);
+
+    setTimeout(() => {
+        bubble.remove();
+    }, 10000);
+}
+
+setInterval(createBubble, 500);
+</script>
+
+</body>
+</html>

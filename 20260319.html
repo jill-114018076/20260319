@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>我的履歷表</title>
+
+<style>
+body {
+    font-family: "Microsoft JhengHei", sans-serif;
+    background-color: #fdf6f0;
+    margin: 0;
+}
+
+.resume {
+    display: flex;
+    max-width: 900px;
+    margin: 40px auto;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.left {
+    width: 35%;
+    background: #ffe4ec;
+    padding: 20px;
+    text-align: center;
+}
+
+.right {
+    width: 65%;
+    padding: 30px;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+h1 {
+    margin: 0;
+}
+
+.title {
+    color: gray;
+    margin-bottom: 20px;
+}
+
+h2 {
+    border-bottom: 2px solid #ffb6c1;
+    padding-bottom: 5px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 15px;
+    border: none;
+    background: #ffb6c1;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #ff8fab;
+}
+</style>
+
+</head>
+<body>
+
+<div class="resume">
+    <div class="left">
+        <img src="images/your-photo.jpg" alt="個人照片" class="profile-pic">
+
+        <h2>基本資料</h2>
+        <p><strong>姓名：</strong>蔡某某</p>
+        <p><strong>電話：</strong>0912-345-678</p>
+        <p><strong>Email：</strong>example@gmail.com</p>
+
+        <h2>技能</h2>
+        <ul style="list-style:none; padding:0;">
+            <li>HTML / CSS</li>
+            <li>JavaScript</li>
+            <li>設計美編</li>
+        </ul>
+    </div>
+
+    <div class="right">
+        <h1 id="name">蔡某某</h1>
+        <p class="title">前端工程師</p>
+
+        <h2>自我介紹</h2>
+        <p>
+            我是一位熱愛設計與前端開發的人，喜歡製作可愛且具有互動性的網站。
+        </p>
+
+        <h2>學歷</h2>
+        <p>某某大學 資訊管理系</p>
+
+        <h2>工作經驗</h2>
+        <p>ABC公司 - 前端工程師 (2022 - 2025)</p>
+
+        <button onclick="changeColor()">點我換主題色 🎨</button>
+    </div>
+</div>
+
+<script>
+function changeColor() {
+    const colors = ["#ffe4ec", "#e0f7fa", "#fff3cd", "#e8f5e9"];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+    document.querySelector(".left").style.background = randomColor;
+}
+</script>
+
+</body>
+</html>
