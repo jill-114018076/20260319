@@ -2,71 +2,117 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<title>我的履歷表</title>
+<title>可愛履歷</title>
 
 <style>
 body {
     font-family: "Microsoft JhengHei", sans-serif;
-    background-color: #fdf6f0;
     margin: 0;
+    background: linear-gradient(135deg, #ffd6e0, #fef6e4);
+    overflow-x: hidden;
+}
+
+/* 氣泡動畫 */
+.bubble {
+    position: fixed;
+    bottom: -50px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 50%;
+    animation: float 10s infinite;
+}
+
+@keyframes float {
+    from { transform: translateY(0); }
+    to { transform: translateY(-110vh); }
 }
 
 .resume {
     display: flex;
     max-width: 900px;
-    margin: 40px auto;
+    margin: 50px auto;
     background: white;
-    border-radius: 15px;
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
+/* 左側 */
 .left {
     width: 35%;
     background: #ffe4ec;
     padding: 20px;
     text-align: center;
+    transition: 0.5s;
 }
 
+.profile-pic {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid white;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+/* 右側 */
 .right {
     width: 65%;
     padding: 30px;
 }
 
-.profile-pic {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 15px;
-}
-
 h1 {
     margin: 0;
+    font-size: 28px;
 }
 
 .title {
-    color: gray;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.student-id {
+    color: #ff6b9a;
+    font-weight: bold;
     margin-bottom: 20px;
 }
 
 h2 {
-    border-bottom: 2px solid #ffb6c1;
+    border-bottom: 2px dashed #ffb6c1;
     padding-bottom: 5px;
 }
 
+/* 卡片 */
+.card {
+    background: #fff7fa;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* 按鈕 */
 button {
     margin-top: 20px;
     padding: 10px 15px;
     border: none;
-    background: #ffb6c1;
+    background: linear-gradient(45deg, #ff9a9e, #ffb6c1);
     color: white;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 button:hover {
-    background: #ff8fab;
+    transform: scale(1.1);
+}
+
+/* 手機版 */
+@media (max-width: 768px) {
+    .resume {
+        flex-direction: column;
+    }
+    .left, .right {
+        width: 100%;
+    }
 }
 </style>
 
@@ -74,48 +120,75 @@ button:hover {
 <body>
 
 <div class="resume">
+    <!-- 左側 -->
     <div class="left">
-        <img src="images/photo.jpg" alt="個人照片" class="profile-pic">
+        <img src="images/photo.jpg" class="profile-pic">
 
         <h2>基本資料</h2>
-        <p><strong>姓名：</strong>蔡某某</p>
-        <p><strong>電話：</strong>0912-345-678</p>
-        <p><strong>Email：</strong>example@gmail.com</p>
+        <div class="card">姓名：蔡某某</div>
+        <div class="card">學號：114018076</div>
+        <div class="card">電話：0912-345-678</div>
+        <div class="card">Email：example@gmail.com</div>
 
         <h2>技能</h2>
-        <ul style="list-style:none; padding:0;">
-            <li>HTML / CSS</li>
-            <li>JavaScript</li>
-            <li>設計美編</li>
-        </ul>
+        <div class="card">HTML / CSS</div>
+        <div class="card">JavaScript</div>
+        <div class="card">設計美編</div>
     </div>
 
+    <!-- 右側 -->
     <div class="right">
-        <h1 id="name">蔡某某</h1>
+        <h1>蔡某某</h1>
         <p class="title">前端工程師</p>
+        <p class="student-id">學號：114018076</p>
 
         <h2>自我介紹</h2>
-        <p>
-            我是一位熱愛設計與前端開發的人，喜歡製作可愛且具有互動性的網站。
+        <p class="card">
+            我喜歡製作可愛又有互動感的網站，讓使用者感受到設計的溫度 ✨
         </p>
 
         <h2>學歷</h2>
-        <p>某某大學 資訊管理系</p>
+        <p class="card">某某大學 資訊管理系</p>
 
         <h2>工作經驗</h2>
-        <p>ABC公司 - 前端工程師 (2022 - 2025)</p>
+        <p class="card">ABC公司 - 前端工程師 (2022 - 2025)</p>
 
-        <button onclick="changeColor()">點我換主題色 🎨</button>
+        <button onclick="changeTheme()">換主題色 🌈</button>
     </div>
 </div>
 
 <script>
-function changeColor() {
-    const colors = ["#ffe4ec", "#e0f7fa", "#fff3cd", "#e8f5e9"];
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-
-    document.querySelector(".left").style.background = randomColor;
+// 🎨 主題切換
+function changeTheme() {
+    const colors = [
+        "#ffe4ec",
+        "#d0f4de",
+        "#cdb4db",
+        "#fff1c1",
+        "#a0c4ff"
+    ];
+    const random = colors[Math.floor(Math.random() * colors.length)];
+    document.querySelector(".left").style.background = random;
 }
+
+// 🫧 氣泡動畫
+function createBubble() {
+    const bubble = document.createElement("div");
+    bubble.classList.add("bubble");
+
+    const size = Math.random() * 40 + 10;
+    bubble.style.width = size + "px";
+    bubble.style.height = size + "px";
+    bubble.style.left = Math.random() * window.innerWidth + "px";
+
+    document.body.appendChild(bubble);
+
+    setTimeout(() => {
+        bubble.remove();
+    }, 10000);
+}
+
+setInterval(createBubble, 500);
 </script>
 
 </body>
