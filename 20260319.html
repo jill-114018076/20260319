@@ -176,37 +176,40 @@ button:hover {
 </div>
 
 <script>
-// 🎨 主題切換
-function changeTheme() {
-    const colors = [
-        "#ffe4ec",
-        "#d0f4de",
-        "#cdb4db",
-        "#fff1c1",
-        "#a0c4ff"
-    ];
-    const random = colors[Math.floor(Math.random() * colors.length)];
-    document.querySelector(".left").style.background = random;
+// Some code thanks to @chrisgannon
+
+var select = function(s) {
+  return document.querySelector(s);
 }
 
-// 🫧 氣泡動畫
-function createBubble() {
-    const bubble = document.createElement("div");
-    bubble.classList.add("bubble");
-
-    const size = Math.random() * 40 + 10;
-    bubble.style.width = size + "px";
-    bubble.style.height = size + "px";
-    bubble.style.left = Math.random() * window.innerWidth + "px";
-
-    document.body.appendChild(bubble);
-
-    setTimeout(() => {
-        bubble.remove();
-    }, 10000);
+function randomBetween(min,max)
+{
+    var number = Math.floor(Math.random()*(max-min+1)+min);
+  
+    if ( number !== 0 ){
+      return number;
+    }else {
+      return 0.5;
+    }
 }
 
-setInterval(createBubble, 500);
+var tl = new TimelineMax();
+
+for(var i = 0; i < 20; i++){
+
+  var t = TweenMax.to(select('.bubble' + i), randomBetween(1, 1.5), {
+    x: randomBetween(12, 15) * (randomBetween(-1, 1)),
+    y: randomBetween(12, 15) * (randomBetween(-1, 1)), 
+    repeat:-1,
+    repeatDelay:randomBetween(0.2, 0.5),
+    yoyo:true,
+    ease:Elastic.easeOut.config(1, 0.5)
+  })
+
+  tl.add(t, (i+1)/0.6)
+}
+
+tl.seek(50);
 </script>
 
 </body>
