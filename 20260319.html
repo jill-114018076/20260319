@@ -12,24 +12,23 @@ body {
     color: #333;
 }
 
-/* 主容器 */
+/* 主容器（改成直式） */
 .resume {
-    display: flex;
-    max-width: 1000px;
+    display: block;
+    max-width: 800px;
     margin: 50px auto;
     background: white;
     border-radius: 10px;
-    overflow: hidden;
+    padding: 40px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.08);
 }
 
-/* 左側（側邊欄） */
+/* 左側 → 變成「上方區塊」 */
 .left {
-    width: 32%;
-    background: #1e2a38;
-    color: white;
-    padding: 30px 20px;
+    width: 100%;
     text-align: center;
+    padding-bottom: 25px;
+    border-bottom: 2px solid #e5e7eb;
 }
 
 /* 頭像 */
@@ -38,54 +37,60 @@ body {
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid #ffffff;
-    margin-bottom: 15px;
+    border: 4px solid #1e2a38;
+    margin-bottom: 10px;
 }
 
-/* 左側標題 */
-.left h2 {
-    border-bottom: 1px solid rgba(255,255,255,0.3);
-    padding-bottom: 5px;
-    margin-top: 20px;
-}
-
-/* 卡片（左側簡化） */
+/* 基本資料卡片（橫排） */
 .left .card {
-    background: transparent;
-    box-shadow: none;
-    margin: 8px 0;
-    padding: 5px;
+    display: inline-block;
+    margin: 5px;
+    padding: 8px 12px;
+    background: #f1f5f9;
+    border-radius: 6px;
     font-size: 14px;
 }
 
-/* 右側 */
-.right {
-    width: 68%;
-    padding: 40px;
+/* 技能 */
+.left h2 {
+    margin-top: 20px;
 }
 
-/* 主標題 */
+.left .card:nth-child(n+6) {
+    display: block;
+    margin: 5px auto;
+    max-width: 200px;
+}
+
+/* 右側 → 變成「主內容」 */
+.right {
+    width: 100%;
+    padding-top: 30px;
+}
+
+/* 標題 */
 h1 {
-    margin: 0;
+    text-align: center;
     font-size: 30px;
+    margin-bottom: 5px;
     color: #1e2a38;
 }
 
-/* 副標 */
 .title {
+    text-align: center;
     color: #666;
-    margin-bottom: 5px;
 }
 
 .student-id {
+    text-align: center;
     color: #888;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 /* 區塊標題 */
 .right h2 {
-    border-bottom: 2px solid #1e2a38;
-    padding-bottom: 5px;
+    border-left: 5px solid #1e2a38;
+    padding-left: 10px;
     margin-top: 25px;
     font-size: 18px;
 }
@@ -101,28 +106,18 @@ h1 {
 
 /* 按鈕 */
 button {
-    margin-top: 25px;
+    display: block;
+    margin: 30px auto 0;
     padding: 10px 16px;
     border: none;
     background: #1e2a38;
     color: white;
     border-radius: 6px;
     cursor: pointer;
-    transition: 0.3s;
 }
 
 button:hover {
     background: #2c3e50;
-}
-
-/* 手機版 */
-@media (max-width: 768px) {
-    .resume {
-        flex-direction: column;
-    }
-    .left, .right {
-        width: 100%;
-    }
 }
 </style>
 
