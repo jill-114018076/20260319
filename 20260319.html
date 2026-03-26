@@ -8,7 +8,21 @@
 body {
     font-family: "Microsoft JhengHei", sans-serif;
     margin: 0;
-    background: linear-gradient(135deg, #ffd6e0, #fef6e4);
+    background: linear-gradient(135deg, #f8f9ff, #ffeef5);
+}
+
+/* 氣泡 */
+.bubble {
+    position: fixed;
+    bottom: -50px;
+    background: rgba(255,255,255,0.4);
+    border-radius: 50%;
+    animation: float 12s linear infinite;
+}
+
+@keyframes float {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-110vh); opacity: 0; }
 }
 
 /* 主容器 */
@@ -16,30 +30,28 @@ body {
     display: flex;
     max-width: 1000px;
     margin: 60px auto;
-    background: rgba(255,255,255,0.9);
-    backdrop-filter: blur(10px);
     border-radius: 25px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    background: white;
 }
 
-/* 左側 */
+/* 左側（側邊欄） */
 .left {
     width: 35%;
-    background: linear-gradient(180deg, #ffdde1, #ee9ca7);
+    background: linear-gradient(180deg, #ffcad4, #ffd6e0);
     padding: 30px 20px;
     text-align: center;
-    color: #333;
+    color: #444;
 }
 
-/* 頭像 */
 .profile-pic {
     width: 140px;
     height: 140px;
     border-radius: 50%;
     object-fit: cover;
     border: 6px solid white;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     margin-bottom: 15px;
 }
 
@@ -52,12 +64,13 @@ body {
 /* 標題 */
 h1 {
     margin: 0;
-    font-size: 32px;
+    font-size: 30px;
+    letter-spacing: 1px;
 }
 
 .title {
-    color: #777;
-    margin-bottom: 5px;
+    color: #999;
+    margin: 8px 0;
 }
 
 .student-id {
@@ -66,26 +79,26 @@ h1 {
     margin-bottom: 25px;
 }
 
-/* 區塊標題 */
+/* 小標題 */
 h2 {
-    border-left: 5px solid #ff9a9e;
-    padding-left: 10px;
     margin-top: 25px;
+    font-size: 18px;
+    border-left: 5px solid #ffb6c1;
+    padding-left: 10px;
 }
 
 /* 卡片 */
 .card {
-    background: white;
+    background: #fff;
     padding: 12px 15px;
     border-radius: 12px;
-    margin-bottom: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    margin: 10px 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     transition: 0.3s;
 }
 
-/* hover效果 */
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
 }
 
 /* 按鈕 */
@@ -93,17 +106,16 @@ button {
     margin-top: 25px;
     padding: 12px 18px;
     border: none;
-    background: linear-gradient(45deg, #ff758c, #ff7eb3);
+    background: linear-gradient(45deg, #ff9a9e, #ffb6c1);
     color: white;
     border-radius: 12px;
     cursor: pointer;
-    font-size: 15px;
     transition: 0.3s;
+    font-size: 14px;
 }
 
 button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transform: scale(1.05);
 }
 
 /* 手機版 */
@@ -111,8 +123,13 @@ button:hover {
     .resume {
         flex-direction: column;
     }
+
     .left, .right {
         width: 100%;
+    }
+
+    .right {
+        padding: 25px;
     }
 }
 </style>
