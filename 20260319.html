@@ -98,13 +98,19 @@ h1 {
     position: relative;
 }
 
-/* 👉 自動幫你「補內容感」 */
-.card::after {
-    content: "負責前端介面開發、優化使用者體驗，並與團隊協作完成專案。";
+/* 自我介紹強化 */
+.right .card:first-of-type {
+    line-height: 1.8;
+    font-size: 15px;
+    padding: 18px;
+}
+
+/* 自我介紹補充內容（不改HTML，用CSS加） */
+.right .card:first-of-type::after {
+    content: "我具備良好的學習能力與責任感，能快速適應新環境，並持續精進前端技術。同時重視團隊合作與溝通，期望在實務中累積更多經驗，提升問題解決能力與專業實力。";
     display: block;
-    font-size: 13px;
-    color: #666;
-    margin-top: 5px;
+    margin-top: 10px;
+    color: #555;
 }
 
 /* 第一個卡片（自我介紹）不要加 */
