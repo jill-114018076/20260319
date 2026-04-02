@@ -158,13 +158,6 @@ button:hover {
         <img src="images/photo.jpg" class="profile-pic">
         <h1>The audio element</h1>
 
-<p>Click on the play button to play a sound:</p>
-
-<audio controls>
-  <source src="mp3/bg.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-
         <h2>基本資料</h2>
         <div class="card">姓名：蔡某某</div>
         <div class="card">學號：114018076</div>
@@ -236,6 +229,23 @@ for(var i = 0; i < 20; i++){
 
 tl.seek(50);
 </script>
+<audio id="bgm" autoplay loop playsinline>
+  <source src="mp3/bg.mp3" type="audio/mpeg">
+</audio>
 
+<script>
+  const audio = document.getElementById("bgm");
+
+  // 嘗試直接播放
+  audio.play().catch(() => {
+    // 若被擋，快速解除靜音再播放
+    audio.muted = true;
+    audio.play();
+
+    setTimeout(() => {
+      audio.muted = false;
+    }, 100);
+  });
+</script>
 </body>
 </html>
