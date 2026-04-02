@@ -157,7 +157,14 @@ button:hover {
     <div class="left">
         <img src="images/photo.jpg" class="profile-pic">
         <h1>The audio element</h1>
+<h1>The audio element</h1>
 
+<p>Click on the play button to play a sound:</p>
+
+<audio controls>
+  <source src="mp3/bg.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
         <h2>基本資料</h2>
         <div class="card">姓名：蔡某某</div>
         <div class="card">學號：114018076</div>
@@ -193,59 +200,5 @@ button:hover {
     </div>
 </div>
 
-<script>
-// Some code thanks to @chrisgannon
-
-var select = function(s) {
-  return document.querySelector(s);
-}
-
-function randomBetween(min,max)
-{
-    var number = Math.floor(Math.random()*(max-min+1)+min);
-  
-    if ( number !== 0 ){
-      return number;
-    }else {
-      return 0.5;
-    }
-}
-
-var tl = new TimelineMax();
-
-for(var i = 0; i < 20; i++){
-
-  var t = TweenMax.to(select('.bubble' + i), randomBetween(1, 1.5), {
-    x: randomBetween(12, 15) * (randomBetween(-1, 1)),
-    y: randomBetween(12, 15) * (randomBetween(-1, 1)), 
-    repeat:-1,
-    repeatDelay:randomBetween(0.2, 0.5),
-    yoyo:true,
-    ease:Elastic.easeOut.config(1, 0.5)
-  })
-
-  tl.add(t, (i+1)/0.6)
-}
-
-tl.seek(50);
-</script>
-<audio id="bgm" autoplay loop muted playsinline>
-  <source src="mp3/bg.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-  const audio = document.getElementById("bgm");
-
-  // 嘗試直接播放
-  audio.play().catch(() => {
-    // 若被擋，快速解除靜音再播放
-    audio.muted = true;
-    audio.play();
-
-    document. addEventListener("click",()=> {
-      audio.muted = false;
-    });
-  });
-</script>
 </body>
 </html>
